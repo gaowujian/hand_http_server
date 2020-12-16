@@ -8,7 +8,7 @@ const config = {
   directory: {
     flags: "-d, --directory <directory>",
     description: "set directory for server",
-    defaultValue: "'process.cwd()'",
+    defaultValue: process.cwd(),
     usage: "tony_server -d ~/",
   },
 };

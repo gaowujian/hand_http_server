@@ -42,6 +42,7 @@ const finalConfig = mergeOptions(defaultConfig, program);
 
 // console.log(finalConfig);
 // console.log(os.networkInterfaces());
+
 console.log(chalk.keyword("orange")("Starting up http-server, serving "));
 console.log(chalk.keyword("orange")("Available on:"));
 console.log(`  http://127.0.0.1:${chalk.green(finalConfig.port)}`);
@@ -50,3 +51,8 @@ console.log(
     finalConfig.port
   )}`
 );
+
+const Server = require("../src/Server");
+
+const server = new Server(finalConfig);
+server.start();
