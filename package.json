@@ -1,0 +1,16 @@
+{
+  "name": "my-http-server",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "tony_server": "bin/www"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.2.1"
+  }
+}

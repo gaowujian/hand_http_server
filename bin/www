@@ -1,0 +1,52 @@
+#! /usr/bin/env node
+
+const { program } = require("commander");
+const defaultConfig = require("./config");
+const chalk = require("chalk");
+const os = require("os");
+
+const helpInfo = [];
+
+for (const [name, option] of Object.entries(defaultConfig)) {
+  helpInfo.push({ name, usage: option.usage });
+  program.requiredOption(option.flags, option.description, option.defaultValue);
+}
+
+program.on("--help", () => {
+  console.log("");
+  console.log("Example call:");
+  console.log("");
+  console.log("  $ tony_server --help");
+  helpInfo.map((option) => {
+    console.log(`  $ ${option.usage}`);
+  });
+});
+
+program.name("tony_http_server");
+
+program.parse(process.argv);
+
+function mergeOptions(defaultConfig, options) {
+  const finalConfig = {};
+  for (const key in defaultConfig) {
+    if (options[key]) {
+      finalConfig[key] = options[key];
+    } else {
+      finalConfig[key] = defaultConfig[key];
+    }
+  }
+  return finalConfig;
+}
+
+const finalConfig = mergeOptions(defaultConfig, program);
+
+// console.log(finalConfig);
+// console.log(os.networkInterfaces());
+console.log(chalk.keyword("orange")("Starting up http-server, serving "));
+console.log(chalk.keyword("orange")("Available on:"));
+console.log(`  http://127.0.0.1:${chalk.green(finalConfig.port)}`);
+console.log(
+  `  http://${os.networkInterfaces()["en0"][1]["address"]}:${chalk.green(
+    finalConfig.port
+  )}`
+);
