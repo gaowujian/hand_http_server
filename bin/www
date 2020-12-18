@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#! /usr/bin/env nodemon
 
 const { program } = require("commander");
 const defaultConfig = require("./config");
@@ -40,7 +40,7 @@ function mergeOptions(defaultConfig, options) {
 
 const finalConfig = mergeOptions(defaultConfig, program);
 
-// console.log(finalConfig);
+console.log(finalConfig);
 // console.log(os.networkInterfaces());
 
 console.log(chalk.keyword("orange")("Starting up http-server, serving "));
