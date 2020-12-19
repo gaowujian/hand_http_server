@@ -4,6 +4,8 @@ const path = require("path");
 const fs = require("fs").promises;
 const ejs = require("ejs");
 const mime = require("Mime");
+const chalk = require("chalk");
+const os = require("os");
 class Server {
   constructor(options) {
     this.port = options.port;
@@ -68,6 +70,14 @@ class Server {
       }
     });
     server.listen(this.port, () => {
+      console.log(chalk.keyword("orange")("Starting up http-server, serving "));
+      console.log(chalk.keyword("orange")("Available on:"));
+      console.log(`  http://127.0.0.1:${chalk.green(this.port)}`);
+      console.log(
+        `  http://${os.networkInterfaces()["en0"][1]["address"]}:${chalk.green(
+          this.port
+        )}`
+      );
       console.log(`server is running on ${this.port}`);
     });
   }

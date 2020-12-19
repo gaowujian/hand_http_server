@@ -6,12 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>我是后端返回的模版引擎文件</h1>
-    <h1><%=title%></h1>
+    <h1>tony_server静态资源服务</h1>
     <%dirs.forEach(dir=>{%>
     <li><a href="<%=dir.link%>"><%=dir.label%></a></li>
     <%})%>
-
-    <link rel="stylesheet" href="/public/index.css" />
+    <style>
+      body {
+        background-color: lightblue;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="/public/index.css" /> -->
   </body>
 </html>
